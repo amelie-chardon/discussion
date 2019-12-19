@@ -357,6 +357,7 @@ ul
     background-image: url("img/header.jpg");
     background-size: cover;
     background-position: right;
+    border-radius: 8px;
 }
 
 .modif_profil, .deco_desins
