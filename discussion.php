@@ -55,8 +55,8 @@ while ($messages = (mysqli_fetch_all($query)))
             {
                 //L'utilisateur peut supprimer son message
                 ?>
-                <form method="post" action="discussion.php">
-                <button type="submit" name="<?php echo $message[0] ?>">Supprimer le message</button>
+                <form method="post" action="discussion.php" id="suppression">
+                <button type="submit" id="submit" name="<?php echo $message[0] ?>">Supprimer le message</button>
                 </form>
                 <?php
             }
@@ -88,7 +88,7 @@ else
 
 </main>
 <footer>
-<p class="text_footer">Created by Amelie & Sarah | 2019</p>
+<p class="text_footer">Created by Amélie & Sarah | 2019</p>
 </footer>
 </body>
 </html>

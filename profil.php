@@ -48,11 +48,11 @@ if ($_SESSION["login"]==$id)
     $password_bdd=$resultat[0][2];
 
     ?>
-
+    <section class="profil_infos">
     <section class="modif_profil">
     <section class="modif_identifiant">
     <h2>Modifier mon identifiant</h2>
-    <form class="formulaire" method="post" action="profil.php">
+    <form method="post" action="profil.php">
     <label for="identifiant_modif">Nouvel identifiant :</label>
     <input type="text" name="identifiant_modif" id="identifiant_modif" required>
     <label for="password">Confirmation du mot de passe :</label>
@@ -126,7 +126,7 @@ if ($_SESSION["login"]==$id)
     <section class="modif_mdp">
     <h2>Modifier mon mot de passe</h2>
     <form method="post" action="profil.php">
-    <label for="password">Ancien mot de passe (au moins 5 car.):</label>
+    <label for="password">Ancien mot de passe :</label>
     <input type="password" name="password" id="password" minlength="5" required>
     <label for="password_modif">Nouveau mot de passe (au moins 5 car.):</label>
     <input type="password" name="password_modif" id="password_modif" minlength="5">
@@ -157,7 +157,7 @@ if ($_SESSION["login"]==$id)
         else //On modifie les informations de l'utilisateur dans la bdd
         {
             //Préparation de la requête SQL pour màj les données dans la bdd
-            $password_modif_hach=password_hash($password_modif, PASSWORD_BCRYPT);
+            $password_modif_hach=password_hash($password_modif, PASSWORD_BCRYPT,array('cost'=>6));
             $update="UPDATE utilisateurs SET password = \"$password_modif_hach\" WHERE utilisateurs.login = \"$id\" ";
 
             //Execution de la requête SQL pour màj les données dans la bdd
@@ -208,6 +208,7 @@ if ($_SESSION["login"]==$id)
     </form>
     </section>
     </section>
+    </section>
     <?php
     //On vérifie que le formulaire a été envoyé
     if(isset($_POST["desinscription"]))
@@ -249,7 +250,7 @@ mysqli_close($connexion);
 
 </main>
 <footer>
-<p class="text_footer">Created by Amelie & Sarah | 2019</p>
+<p class="text_footer">Created by Amélie & Sarah | 2019</p>
 </footer>
 </body>
 
